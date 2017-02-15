@@ -1,3 +1,34 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container-fluid">
+  <div class="row">
+    <aside class="col-sm-4">
+      <md-tab-group>
+        <md-tab label="Friends">
+          <md-list>
+            <md-list-item>Jack</md-list-item>
+            <md-list-item>Mike</md-list-item>
+            <md-list-item>Bill</md-list-item>
+            <md-list-item>Bob</md-list-item>
+            <md-list-item>Simon</md-list-item>
+            <md-list-item>Anna</md-list-item>
+            <md-list-item>Denice</md-list-item>
+            <md-list-item>Cameron</md-list-item>
+            <md-list-item>Sheyla</md-list-item>
+          </md-list>
+        </md-tab>
+        <md-tab label="Rooms">
+          <md-list>
+            <md-list-item>Conversation 1</md-list-item>
+            <md-list-item>Conversation 2</md-list-item>
+            <md-list-item>Conversation 3</md-list-item>
+            <md-list-item>Conversation 4</md-list-item>
+            <md-list-item>Conversation 5</md-list-item>
+            <md-list-item>Conversation 6</md-list-item>
+          </md-list>
+        </md-tab>
+      </md-tab-group>
+    </aside>
+    <div class="col-sm-8">
+      <router-outlet></router-outlet>      
+    </div>
+  </div>
+</div>
