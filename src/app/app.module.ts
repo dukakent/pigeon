@@ -8,12 +8,14 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 
 import { AppComponent } from './app.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 import { PageHomeComponent } from './pageHome/pageHome.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageHomeComponent
+    PageHomeComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
