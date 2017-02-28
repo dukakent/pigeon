@@ -1,1 +1,0 @@
-export * from './partnerSearch.component';
