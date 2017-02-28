@@ -1,10 +1,21 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-4 col-lg-3">
-      <sidebar></sidebar>
-    </div>
-    <div class="col-sm-8 col-lg-9">
-      <router-outlet></router-outlet>      
-    </div>
-  </div>
+<div class="sidebar" [hidden]="!auth.isAuthed()">
+  <md-tab-group>
+    <md-tab label="People">
+      <md-nav-list>
+        <a md-list-item href="#" *ngFor="let user of partners">
+          {{ user.name }}
+        </a>
+      </md-nav-list>
+    </md-tab>
+    <md-tab label="Rooms">
+      <md-list>
+        <md-list-item>
+          <div class="small text-muted">No rooms yet</div>
+        </md-list-item>
+      </md-list>
+    </md-tab>
+  </md-tab-group>
+</div>
+<div class="main">
+  <router-outlet></router-outlet>
 </div>

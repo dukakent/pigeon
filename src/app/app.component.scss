@@ -1,0 +1,18 @@
+:host {
+  height: 100%;
+  display: flex;
+}
+
+.sidebar {
+  width: 240px;
+  border-right: 1px #e0e0e0 solid;
+}
+
+.main {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+:host /deep/ md-tab-group .md-tab-label {
+  min-width: 0;
+}

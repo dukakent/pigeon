@@ -1,0 +1,10 @@
+<div class="partner-search-input">
+  <input type="text" #keywordInput placeholder="Start typing name" (keyup)="find(keywordInput.value)">
+</div>
+<div class="matches">
+  <ul>
+    <li *ngFor="let match of matches">
+      {{ match.name }} <button (click)="invite(match._id)">Invite</button>
+    </li>
+  </ul>
+</div>
