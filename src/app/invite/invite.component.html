@@ -1,3 +1,9 @@
-<p>
-  invite works!
-</p>
+<ul>
+  <li *ngFor="let invite of invites">
+    <div>
+      From: {{ invite.from.name }}
+      <button md-button (click)="approve(invite)">Approve</button>
+      <button md-button (click)="reject(invite)">Reject</button>
+    </div>
+  </li>
+</ul>

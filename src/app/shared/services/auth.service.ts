@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AuthHttp, tokenNotExpired } from 'angular2-jwt';
-import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { WebSocketService } from './websocket.service';
+import { Router } from '@angular/router';
 
-declare var Auth0Lock: any;
+declare const Auth0Lock: any;
 
 @Injectable()
 export class AuthService {
@@ -12,9 +13,9 @@ export class AuthService {
   public token;
   private lock;
 
-  constructor(private authHttp: AuthHttp, private http: Http, private ws: WebSocketService) {
+  constructor(private authHttp: AuthHttp, private http: Http, private ws: WebSocketService, private router: Router) {
     this.profile = JSON.parse(localStorage.getItem('profile'));
-    this.token =localStorage.getItem('id_token');
+    this.token = localStorage.getItem('id_token');
 
     if (this.token) {
       this.ws.authenticate(this.token);
@@ -47,14 +48,14 @@ export class AuthService {
         if (profile.user_metadata && profile.user_metadata.name) {
           profile.name = profile.user_metadata.name;
         }
-        
+
         localStorage.setItem('profile', JSON.stringify(profile));
         this.profile = profile;
         this.sync();
       });
     });
   }
-  
+
   login() {
     this.lock.show();
   }
@@ -68,16 +69,18 @@ export class AuthService {
     localStorage.removeItem('profile');
     this.profile = null;
     this.token = null;
+    this.router.navigate(['signin']);
   }
 
   sync() {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+    const headers = new Headers({ 'Content-Type': 'application/json' });
 
     this.authHttp
       .post('/api/user', JSON.stringify(this.profile), { headers })
       .map((res) => res.json())
       .subscribe((res) => {
         this.profile = res;
+        this.router.navigate(['']);
       });
   }
 

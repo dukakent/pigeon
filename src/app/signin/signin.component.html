@@ -1,0 +1,3 @@
+<div class="flex" *ngIf="!auth.isAuthed()">
+    <button md-raised-button (click)="auth.login()">Sign in</button>
+</div>

@@ -1,11 +1,7 @@
-<div class="sidebar" [hidden]="!auth.isAuthed()">
+<div class="sidebar" *ngIf="auth.isAuthed()">
   <md-tab-group>
     <md-tab label="People">
-      <md-nav-list>
-        <a md-list-item href="#" *ngFor="let user of partners">
-          {{ user.name }}
-        </a>
-      </md-nav-list>
+      <partner-list></partner-list>
     </md-tab>
     <md-tab label="Rooms">
       <md-list>

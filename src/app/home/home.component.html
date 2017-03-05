@@ -1,10 +1,8 @@
-<div class="flex" *ngIf="!auth.isAuthed()">
-    <button md-raised-button (click)="auth.login()">Sign in</button>
-</div>
-<div class="flex" *ngIf="auth.isAuthed()">
+<div class="flex">
   <div class="middle text-center">
     <h2>Hi, {{auth.profile.name}}! You are authenticated!</h2>
-    <a md-raised-button routerLink="/search">Find somebody</a>
+    <button md-raised-button routerLink="/search">Find somebody</button>
+    <button md-raised-button routerLink="/invite">Invitations</button>
     <button md-raised-button (click)="auth.logout()">Sign out</button>
   </div>
 </div>

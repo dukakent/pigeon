@@ -5,20 +5,23 @@ import { Http, HttpModule, RequestOptions } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { AuthHttp } from 'angular2-jwt';
 
-import { AppRoutingModule } from './app-routing.module'; 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SigninComponent } from './signin/signin.component';
 import { HomeComponent } from './home';
-import { PartnerSearchComponent } from './partnerSearch';
 import { AuthService, WebSocketService } from './shared/services';
-import { PartnershipService } from './partnership';
+import { AuthedUserGuard, GuestUserGuard } from './shared/guards'; 
+import { PartnershipService, PartnerSearchComponent, PartnerListComponent } from './partnership';
 import { authHttpServiceFactory } from './shared/helpers';
-import { InviteComponent } from './invite/invite.component';
+import { InviteComponent, InviteService } from './invite';
 
 @NgModule({
   declarations: [
     AppComponent,
+    SigninComponent,
     HomeComponent,
     PartnerSearchComponent,
+    PartnerListComponent,
     InviteComponent
   ],
   imports: [
@@ -32,11 +35,14 @@ import { InviteComponent } from './invite/invite.component';
     AuthService,
     WebSocketService,
     PartnershipService,
+    InviteService,
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
       deps: [Http, RequestOptions]
-    }
+    },
+    AuthedUserGuard,
+    GuestUserGuard,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,2 +1,3 @@
 export * from './user';
-export * from './room';
+export * from './partner';
+export * from './invite';

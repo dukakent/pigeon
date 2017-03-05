@@ -1,17 +1,33 @@
-import { NgModule }              from '@angular/core';
-import { RouterModule, Routes }  from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
+import { AuthService } from './shared/services';
 import { HomeComponent } from './home';
-import { PartnerSearchComponent } from './partnerSearch';
+import { SigninComponent } from './signin/signin.component';
+import { PartnerSearchComponent } from './partnership';
+import { InviteComponent } from './invite/invite.component';
+import { AuthedUserGuard, GuestUserGuard } from './shared/guards'; 
 
 export const routes: Routes = [
   {
+    path: 'signin',
+    component: SigninComponent,
+    canActivate: [GuestUserGuard]
+  },
+  {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthedUserGuard]
   },
   {
     path: 'search',
-    component: PartnerSearchComponent
+    component: PartnerSearchComponent,
+    canActivate: [AuthedUserGuard]
+  },
+  {
+    path: 'invite',
+    component: InviteComponent,
+    canActivate: [AuthedUserGuard]
   }
 ]
 

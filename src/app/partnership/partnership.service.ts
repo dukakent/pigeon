@@ -2,23 +2,63 @@ import { Injectable } from '@angular/core';
 import { User } from '../shared/models';
 import { AuthHttp } from 'angular2-jwt';
 import { AuthService } from '../shared/services';
+import { Partner } from '../shared/models';
+import { WebSocketService } from '../shared/services';
 
 @Injectable()
 export class PartnershipService {
 
-  private knownPartners;
-  private unknownPartners;
+  private knownPartnersStream;
 
-  constructor(private authHttp: AuthHttp, private authService: AuthService) {
-    this.reset();
+  knownPartners: Partner[];
+  unknownPartners: Partner[];
+
+  constructor(private authHttp: AuthHttp, private authService: AuthService, private ws: WebSocketService) {
+    this.knownPartners = [];
+    this.unknownPartners = [];
+
+    this.ws
+      .listen('partner/new')
+      .subscribe((partner) => {
+        this.knownPartners.push(partner);
+      });
+
+    this.ws
+      .listen('partner/remove')
+      .subscribe((id) => {
+        const removingPartner = this.knownPartners.find(partner => partner._id === id);
+        this.remove(removingPartner);
+      });
+
+    this.getPartners();
   }
 
   getByIds(ids) {
-    for (let id of ids) {
+    for (const id of ids) {
       this.authHttp.get('api/user/' + id)
         .map(res => res.json())
         .subscribe(this.spread);
     }
+  }
+
+  getPartners() {
+    this.authHttp.get('api/partner/myPartners')
+      .map(res => res.json())
+      .subscribe((res: Partner[]) => {
+        res.forEach((partner) => {
+          this.knownPartners.push(<Partner> partner);
+        });
+      });
+  }
+
+  removePartner(partner) {
+    this.ws.send('partner/remove', partner._id);
+    this.remove(partner);
+  }
+
+  remove(partner) {
+    const partnerIndex = this.knownPartners.indexOf(partner);
+    this.knownPartners.splice(partnerIndex, 1);
   }
 
   private spread(partner) {
@@ -29,10 +69,5 @@ export class PartnershipService {
     } else {
       this.unknownPartners = partner;
     }
-  }
-
-  reset() {
-    this.knownPartners = [];
-    this.unknownPartners = [];
   }
 }

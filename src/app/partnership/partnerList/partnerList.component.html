@@ -1,0 +1,6 @@
+<md-list>
+  <md-list-item *ngFor="let partner of partners">
+    {{ partner.name }}
+    <button md-button (click)="removePartner(partner)">×</button>
+  </md-list-item>
+</md-list>
