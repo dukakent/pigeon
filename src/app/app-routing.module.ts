@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthService } from './shared/services';
-import { HomeComponent } from './home';
+import { HomeComponent } from './home/home.component';
+import { RoomComponent } from './room/room.component';
 import { SigninComponent } from './signin/signin.component';
-import { PartnerSearchComponent } from './partnership';
+import { PartnerSearchComponent } from './partnership/partner-search/partner-search.component';
 import { InviteComponent } from './invite/invite.component';
-import { AuthedUserGuard, GuestUserGuard } from './shared/guards'; 
+import { AuthedUserGuard } from './shared/guards/authed-user.guard';
+import { GuestUserGuard } from './shared/guards/guest-user.guard';
 
 export const routes: Routes = [
   {
@@ -28,8 +29,13 @@ export const routes: Routes = [
     path: 'invite',
     component: InviteComponent,
     canActivate: [AuthedUserGuard]
+  },
+  {
+    path: 'room/id/:id',
+    component: RoomComponent,
+    canActivate: [AuthedUserGuard]
   }
-]
+];
 
 @NgModule({
   imports: [

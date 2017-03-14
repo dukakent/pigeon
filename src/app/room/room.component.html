@@ -1,0 +1,10 @@
+<h3 [innerHTML]="room?.name"></h3>
+<div class="all-messages">
+  <div *ngFor="let message of room?.messages">
+    <span><strong>{{ message.sender?.name }}:</strong></span>
+    <span>{{ message.text }}</span>
+  </div>
+</div>
+<div class="message-create">
+  <app-room-control (message)="onNewMessage($event)"></app-room-control>
+</div>

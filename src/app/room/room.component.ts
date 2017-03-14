@@ -1,21 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RoomService } from './';
+import { RoomService } from './room.service';
 
 @Component({
-  templateUrl: './room.component.html'
+  templateUrl: './room.component.html',
+  styleUrls: ['./room.component.scss']
 })
 export class RoomComponent implements OnInit {
 
-  private sub;
-  private room;
-  
-  constructor(private roomService: RoomService, private route: ActivatedRoute) {}
+  public room;
+
+  constructor(private route: ActivatedRoute, private roomService: RoomService) {}
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-       this.room = this.roomService.getById(params['id']);
-    });
+    this.route.params
+      .map(params => params['id'])
+      .subscribe(id => {
+        this.room = this.roomService.getById(id);
+      });
   }
 
+  onNewMessage(message) {
+    this.roomService.createNewMessage(this.room, message);
+  }
 }

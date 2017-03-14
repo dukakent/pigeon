@@ -1,14 +1,10 @@
 <div class="sidebar" *ngIf="auth.isAuthed()">
   <md-tab-group>
     <md-tab label="People">
-      <partner-list></partner-list>
+      <app-partner-list></app-partner-list>
     </md-tab>
     <md-tab label="Rooms">
-      <md-list>
-        <md-list-item>
-          <div class="small text-muted">No rooms yet</div>
-        </md-list-item>
-      </md-list>
+      <app-room-list></app-room-list>
     </md-tab>
   </md-tab-group>
 </div>

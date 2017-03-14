@@ -1,0 +1,18 @@
+<form
+  #thisForm="ngForm"
+  (ngSubmit)="$event.preventDefault(); submit(); thisForm.reset()"
+>
+  <md-input-container>
+    <input
+      mdInput
+      required
+      name="message"
+      type="text"
+      autocomplete="off"
+      placeholder="Enter your message here"
+      [(ngModel)]="text"
+    >
+  </md-input-container>
+
+  <button md-button type="submit" [disabled]="!thisForm.form.valid">Send</button>
+</form>

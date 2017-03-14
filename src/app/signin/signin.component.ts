@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../shared/services';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   templateUrl: './signin.component.html'
 })
 export class SigninComponent {
 
-  constructor(private auth: AuthService) {}
+  constructor(public auth: AuthService) {}
 
 }

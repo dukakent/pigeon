@@ -1,0 +1,5 @@
+<md-list>
+  <md-list-item *ngFor="let room of rooms">
+    <a md-button [routerLink]="['room/id', room._id]">{{ room.name }}</a>
+  </md-list-item>
+</md-list>

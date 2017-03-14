@@ -8,12 +8,21 @@ import { AuthHttp } from 'angular2-jwt';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
-import { HomeComponent } from './home';
-import { AuthService, WebSocketService } from './shared/services';
-import { AuthedUserGuard, GuestUserGuard } from './shared/guards'; 
-import { PartnershipService, PartnerSearchComponent, PartnerListComponent } from './partnership';
-import { authHttpServiceFactory } from './shared/helpers';
-import { InviteComponent, InviteService } from './invite';
+import { HomeComponent } from './home/home.component';
+import { RoomComponent } from './room/room.component';
+import { AuthService } from './shared/services/auth.service';
+import { WebSocketService } from './shared/services/websocket.service';
+import { AuthedUserGuard } from './shared/guards/authed-user.guard';
+import { GuestUserGuard } from './shared/guards/guest-user.guard';
+import { PartnershipService } from './partnership/partnership.service';
+import { PartnerSearchComponent } from './partnership/partner-search/partner-search.component';
+import { PartnerListComponent } from './partnership/partner-list/partner-list.component';
+import { authHttpServiceFactory } from './shared/helpers/authHttpServiceFactory';
+import { InviteComponent } from './invite/invite.component';
+import { InviteService } from './invite/invite.service';
+import {RoomService} from './room/room.service';
+import {RoomListComponent} from './room/room-list/room-list.component';
+import {RoomControlComponent} from './room/room-control/room-control.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +31,10 @@ import { InviteComponent, InviteService } from './invite';
     HomeComponent,
     PartnerSearchComponent,
     PartnerListComponent,
-    InviteComponent
+    InviteComponent,
+    RoomComponent,
+    RoomListComponent,
+    RoomControlComponent
   ],
   imports: [
     AppRoutingModule,
@@ -43,6 +55,7 @@ import { InviteComponent, InviteService } from './invite';
     },
     AuthedUserGuard,
     GuestUserGuard,
+    RoomService
   ],
   bootstrap: [AppComponent]
 })

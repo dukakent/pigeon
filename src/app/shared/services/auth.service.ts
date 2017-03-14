@@ -50,8 +50,7 @@ export class AuthService {
         }
 
         localStorage.setItem('profile', JSON.stringify(profile));
-        this.profile = profile;
-        this.sync();
+        this.sync(profile);
       });
     });
   }
@@ -72,11 +71,11 @@ export class AuthService {
     this.router.navigate(['signin']);
   }
 
-  sync() {
+  sync(preProfile) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
 
     this.authHttp
-      .post('/api/user', JSON.stringify(this.profile), { headers })
+      .post('/api/user', JSON.stringify(preProfile), { headers })
       .map((res) => res.json())
       .subscribe((res) => {
         this.profile = res;

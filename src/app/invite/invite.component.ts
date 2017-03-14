@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { InviteService } from './invite.service';
-import { Invite } from '../shared/models';
+import { Invite } from '../shared/models/invite';
 
 @Component({
-  selector: 'invite',
+  selector: 'app-invite',
   templateUrl: './invite.component.html',
   styleUrls: ['./invite.component.css']
 })

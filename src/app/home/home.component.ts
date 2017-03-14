@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { AuthService, WebSocketService } from '../shared/services';
+import { AuthService } from '../shared/services/auth.service';
+import { WebSocketService } from '../shared/services/websocket.service';
 
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor(private auth: AuthService, private ws: WebSocketService) {}
+  constructor(public auth: AuthService, private ws: WebSocketService) {}
 }

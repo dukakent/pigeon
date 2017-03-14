@@ -4,13 +4,12 @@
 }
 
 .sidebar {
-  width: 240px;
+  width: 320px;
   border-right: 1px #e0e0e0 solid;
 }
 
 .main {
   flex-grow: 1;
-  padding: 20px;
 }
 
 :host /deep/ md-tab-group .mat-tab-label {

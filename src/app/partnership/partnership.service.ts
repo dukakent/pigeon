@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { User } from '../shared/models';
+import { User } from '../shared/models/user';
 import { AuthHttp } from 'angular2-jwt';
-import { AuthService } from '../shared/services';
-import { Partner } from '../shared/models';
-import { WebSocketService } from '../shared/services';
+import { AuthService } from '../shared/services/auth.service';
+import { Partner } from '../shared/models/partner';
+import { WebSocketService } from '../shared/services/websocket.service';
 
 @Injectable()
 export class PartnershipService {
@@ -30,7 +30,7 @@ export class PartnershipService {
         this.remove(removingPartner);
       });
 
-    this.getPartners();
+    this.fetch();
   }
 
   getByIds(ids) {
@@ -41,7 +41,7 @@ export class PartnershipService {
     }
   }
 
-  getPartners() {
+  fetch() {
     this.authHttp.get('api/partner/myPartners')
       .map(res => res.json())
       .subscribe((res: Partner[]) => {
