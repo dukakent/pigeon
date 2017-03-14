@@ -6,8 +6,8 @@ import { RoomComponent } from './room/room.component';
 import { SigninComponent } from './signin/signin.component';
 import { PartnerSearchComponent } from './partnership/partner-search/partner-search.component';
 import { InviteComponent } from './invite/invite.component';
-import { AuthedUserGuard } from './shared/guards/authed-user.guard';
-import { GuestUserGuard } from './shared/guards/guest-user.guard';
+import { AuthedUserGuard } from './auth/guards/authed-user.guard';
+import { GuestUserGuard } from './auth/guards/guest-user.guard';
 
 export const routes: Routes = [
   {
