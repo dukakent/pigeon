@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { User } from '../shared/models/user';
 import { AuthHttp } from 'angular2-jwt';
-import { AuthService } from '../shared/services/auth.service';
+import { AuthService } from '../auth/auth.service';
 import { Partner } from '../shared/models/partner';
-import { WebSocketService } from '../shared/services/websocket.service';
+import { WebSocketService } from '../ws/websocket.service';
 
 @Injectable()
 export class PartnershipService {

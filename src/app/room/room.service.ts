@@ -1,8 +1,8 @@
 import {Injectable, OnInit} from '@angular/core';
 import { AuthHttp } from 'angular2-jwt';
-import { WebSocketService } from '../shared/services/websocket.service';
+import {AuthService} from '../auth/auth.service';
+import { WebSocketService } from '../ws/websocket.service';
 import { Room } from '../shared/models/room';
-import {AuthService} from '../shared/services/auth.service';
 
 @Injectable()
 export class RoomService {

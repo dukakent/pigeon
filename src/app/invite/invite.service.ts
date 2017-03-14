@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthHttp } from 'angular2-jwt';
-import { WebSocketService } from '../shared/services/websocket.service';
+import { WebSocketService } from '../ws/websocket.service';
 import { Invite } from '../shared/models/invite';
 
 @Injectable()

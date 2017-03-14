@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthHttp, tokenNotExpired } from 'angular2-jwt';
 import { Http, Headers } from '@angular/http';
-import { WebSocketService } from './websocket.service';
+import { WebSocketService } from '../ws/websocket.service';
 import { Router } from '@angular/router';
 
 declare const Auth0Lock: any;
@@ -13,7 +13,12 @@ export class AuthService {
   public token;
   private lock;
 
-  constructor(private authHttp: AuthHttp, private http: Http, private ws: WebSocketService, private router: Router) {
+  constructor(
+    private authHttp: AuthHttp,
+    private http: Http,
+    private ws: WebSocketService,
+    private router: Router
+  ) {
     this.profile = JSON.parse(localStorage.getItem('profile'));
     this.token = localStorage.getItem('id_token');
 
