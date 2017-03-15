@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../shared/models/user';
+import { Profile } from '../shared/models/profile';
 import { AuthHttp } from 'angular2-jwt';
 import { AuthService } from '../auth/auth.service';
 import { Partner } from '../shared/models/partner';
