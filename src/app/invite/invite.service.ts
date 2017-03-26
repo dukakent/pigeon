@@ -21,11 +21,11 @@ export class InviteService {
         res.forEach((invite) => {
           this.invites.unshift(invite as Invite);
         });
-
-        this.inviteStream.subscribe(data => {
-          this.invites.unshift(data as Invite);
-        });
       });
+
+    this.inviteStream.subscribe(data => {
+      this.invites.unshift(data as Invite);
+    });
   }
 
   approve(invite) {

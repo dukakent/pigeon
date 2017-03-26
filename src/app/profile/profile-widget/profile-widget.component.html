@@ -1,0 +1,4 @@
+<button md-button [mdMenuTriggerFor]="headerMenu" class="full-size">{{ profile.name }}</button>
+<md-menu #headerMenu="mdMenu">
+  <button md-menu-item (click)="onLogoutClick()">Logout</button>
+</md-menu>

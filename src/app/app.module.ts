@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Http, HttpModule, RequestOptions } from '@angular/http';
 import { MaterialModule } from '@angular/material';
+import { ButtonsModule } from 'ng2-bootstrap/buttons';
 import { AuthHttp } from 'angular2-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,28 +21,35 @@ import { PartnerListComponent } from './partnership/partner-list/partner-list.co
 import { authHttpServiceFactory } from './shared/helpers/authHttpServiceFactory';
 import { InviteComponent } from './invite/invite.component';
 import { InviteService } from './invite/invite.service';
-import {RoomService} from './room/room.service';
-import {RoomListComponent} from './room/room-list/room-list.component';
-import {RoomControlComponent} from './room/room-control/room-control.component';
+import { RoomService } from './room/room.service';
+import { RoomListComponent } from './room/room-list/room-list.component';
+import { RoomControlComponent } from './room/room-control/room-control.component';
+import { ProfileWidgetComponent } from './profile/profile-widget/profile-widget.component';
+import { HeaderComponent } from './header/header.component';
+import { CallComponent } from './call/call.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
+    HeaderComponent,
     HomeComponent,
+    ProfileWidgetComponent,
     PartnerSearchComponent,
     PartnerListComponent,
     InviteComponent,
     RoomComponent,
     RoomListComponent,
-    RoomControlComponent
+    RoomControlComponent,
+    CallComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    ButtonsModule.forRoot()
   ],
   providers: [
     AuthService,
@@ -57,6 +65,7 @@ import {RoomControlComponent} from './room/room-control/room-control.component';
     GuestUserGuard,
     RoomService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ CallComponent ]
 })
 export class AppModule { }

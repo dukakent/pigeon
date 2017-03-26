@@ -1,8 +1,7 @@
 <div class="flex">
   <div class="middle text-center">
-    <h2>Hi, {{auth.profile.name}}! You are authenticated!</h2>
+    <h2>Hi, {{me.name}}! You are authenticated!</h2>
     <button md-raised-button routerLink="/search">Find somebody</button>
     <button md-raised-button routerLink="/invite">Invitations</button>
-    <button md-raised-button (click)="auth.logout()">Sign out</button>
   </div>
 </div>

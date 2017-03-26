@@ -4,6 +4,7 @@ import { AuthHttp } from 'angular2-jwt';
 import { AuthService } from '../auth/auth.service';
 import { Partner } from '../shared/models/partner';
 import { WebSocketService } from '../ws/websocket.service';
+import { RoomService } from '../room/room.service';
 
 @Injectable()
 export class PartnershipService {
@@ -13,7 +14,7 @@ export class PartnershipService {
   knownPartners: Partner[];
   unknownPartners: Partner[];
 
-  constructor(private authHttp: AuthHttp, private authService: AuthService, private ws: WebSocketService) {
+  constructor(private authHttp: AuthHttp, private ws: WebSocketService, private roomService: RoomService) {
     this.knownPartners = [];
     this.unknownPartners = [];
 
@@ -58,16 +59,19 @@ export class PartnershipService {
 
   remove(partner) {
     const partnerIndex = this.knownPartners.indexOf(partner);
+    // this.roomService.rooms.find(room => room.)
     this.knownPartners.splice(partnerIndex, 1);
   }
 
   private spread(partner) {
-    const isKnown = this.authService.profile.partners.indexOf(partner._id) >= 0;
+    // const isKnown = this.authService.profile.partners.indexOf(partner._id) >= 0;
 
-    if (isKnown) {
-      this.knownPartners = partner;
-    } else {
-      this.unknownPartners = partner;
-    }
+    // if (isKnown) {
+    //   this.knownPartners = partner;
+    // } else {
+    //   this.unknownPartners = partner;
+    // }
+
+    this.knownPartners = partner;
   }
 }

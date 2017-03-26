@@ -18,7 +18,8 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    canActivate: [AuthedUserGuard]
+    canActivate: [AuthedUserGuard],
+    pathMatch: 'full'
   },
   {
     path: 'search',

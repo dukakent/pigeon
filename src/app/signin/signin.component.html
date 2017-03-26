@@ -1,3 +1,4 @@
-<div class="flex" *ngIf="!auth.isAuthed()">
-    <button md-raised-button (click)="auth.login()">Sign in</button>
+<div class="signin-container full-size">
+    <h1>Welcome to the Pigeon chat! Please signin...</h1>
+    <button md-raised-button (click)="login()" class="btn-signin">Sign in</button>
 </div>

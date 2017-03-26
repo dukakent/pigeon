@@ -1,0 +1,32 @@
+<!-- TODO: remove close button and implement modal component -->
+<div md-dialog-title class="text-right">
+  <button md-dialog-close class="btn-close-dialog" tabindex="-1">&times;</button>
+</div>
+
+<div class="wrapper">
+  <div class="main">
+    <video src="" autoplay></video>
+  </div>
+  <div class="sidebar">
+    <div class="sidebar-up">
+      <div class="control text-center">
+        <button type="button" class="btn btn-default btn-control btn-call" tabindex="-1">
+          <i class="fa fa-phone"></i>
+        </button>
+      </div>
+      <div class="control text-center">
+        <button type="button" class="btn btn-default btn-control" [(ngModel)]="isMicro" btnCheckbox tabindex="-1">
+          <i class="fa fa-microphone"></i>
+        </button>
+      </div>
+      <div class="control text-center">
+        <button type="button" class="btn btn-default btn-control" [(ngModel)]="isCamera" btnCheckbox tabindex="-1">
+          <i class="fa fa-video-camera"></i>
+        </button>
+      </div>
+    </div>
+    <div class="sidebar-down">
+      <video [srcObject]="localMedia" class="local-media" autoplay></video>
+    </div>
+  </div>
+</div>

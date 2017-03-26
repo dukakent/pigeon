@@ -1,13 +1,16 @@
-<div class="sidebar" *ngIf="auth.isAuthed()">
-  <md-tab-group>
-    <md-tab label="People">
-      <app-partner-list></app-partner-list>
-    </md-tab>
-    <md-tab label="Rooms">
-      <app-room-list></app-room-list>
-    </md-tab>
-  </md-tab-group>
-</div>
-<div class="main">
-  <router-outlet></router-outlet>
+<app-header *ngIf="auth.isAuthed()"></app-header>
+<div class="main-wrapper full-size">
+  <md-card class="sidebar" *ngIf="auth.isAuthed()">
+    <md-tab-group>
+      <md-tab label="People">
+        <app-partner-list></app-partner-list>
+      </md-tab>
+      <md-tab label="Rooms">
+        <app-room-list></app-room-list>
+      </md-tab>
+    </md-tab-group>
+  </md-card>
+  <div class="main">
+    <router-outlet></router-outlet>
+  </div>
 </div>

@@ -1,0 +1,67 @@
+:host {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-close-dialog {
+  padding-right: .5em;
+}
+
+.wrapper {
+  flex-grow: 1;
+  padding: 15px;
+  display: flex;
+}
+
+.main {
+  flex-grow: 1;
+  padding-right: 10px;
+  overflow-y: auto;
+}
+
+.local-media {
+  width: 100%;
+}
+
+.btn-control {
+  width: 2em;
+  height: 2em;
+  padding: 0;
+  font-size: 24px;
+  background-color: white !important;
+
+  &:focus { outline: none; }
+
+  &:active, &.active {
+    background-color: darkseagreen !important;
+  }
+}
+
+.btn-call {
+  color: red;
+}
+
+.sidebar {
+  width: 12%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  border-left: 1px #e0e0e0 solid;
+
+  &-up {
+    flex-grow: 1;
+
+    .control {
+      padding: 5px;
+    }
+  }
+
+  &-down {
+
+  }
+}

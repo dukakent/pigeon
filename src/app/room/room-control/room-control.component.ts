@@ -11,13 +11,19 @@ export class RoomControlComponent {
 
   public text: string;
 
-  @Output() public message;
+  @Output() public message: EventEmitter<any>;
+  @Output() public call: EventEmitter<any>;
 
   constructor() {
-    this.message = new EventEmitter<Message>();
+    this.message = new EventEmitter<any>();
+    this.call = new EventEmitter<any>();
   }
 
   submit() {
     this.message.emit(this.text);
+  }
+
+  makeCall() {
+    this.call.emit();
   }
 }

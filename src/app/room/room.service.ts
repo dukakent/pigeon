@@ -1,30 +1,34 @@
 import {Injectable, OnInit} from '@angular/core';
 import { AuthHttp } from 'angular2-jwt';
-import {AuthService} from '../auth/auth.service';
 import { WebSocketService } from '../ws/websocket.service';
 import { Room } from '../shared/models/room';
+import { AuthService } from 'app/auth/auth.service';
+import { Profile } from 'app/shared/models/profile';
 
 @Injectable()
 export class RoomService {
 
-  private me;
+  private me: Profile;
   public rooms;
+  public roomsStream;
 
-  constructor(private authHttp: AuthHttp, private authService: AuthService, private ws: WebSocketService) {
+  constructor(
+    private auth: AuthService,
+    private authHttp: AuthHttp,
+    private ws: WebSocketService
+  ) {
     this.rooms = [];
-    this.me = this.authService.getProfile();
+    this.me = this.auth.profile;
 
     this.ws.listen('room/new').subscribe(room => this.rooms.push(room));
+    this.ws.listen('room/remove').subscribe(roomId => this.remove(roomId));
     this.ws.listen('message/new').subscribe(message => this.addMessageInRoom(message));
 
-    this.fetch();
-  }
-
-  fetch() {
-    this.authHttp
+    this.roomsStream = this.authHttp
       .get('/api/room/myRooms')
-      .map(rooms => rooms.json())
-      .subscribe(rooms => this.addMany(rooms as Room[]));
+      .map(rooms => rooms.json());
+
+    this.roomsStream.subscribe(rooms => this.addMany(rooms as Room[]));
   }
 
   getById(id) {
@@ -57,7 +61,7 @@ export class RoomService {
 
   createNewMessage(room, messageText) {
     const message = {
-      sender: this.me.user_id,
+      sender: this.me._id,
       time: Date.now(),
       text: messageText,
       room: room._id

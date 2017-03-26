@@ -1,3 +1,7 @@
+<button md-icon-button class="btn-call" (click)="makeCall()">
+  <i class="fa fa-phone"></i>
+</button>
+<div class="or">or</div>
 <form
   #thisForm="ngForm"
   (ngSubmit)="$event.preventDefault(); submit(); thisForm.reset()"

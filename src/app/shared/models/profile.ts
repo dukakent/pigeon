@@ -1,7 +1,6 @@
-export class Profile {
-  constructor(
-    private _id: string,
-    private email: string,
-    private name: string,
-  ) {}
+export interface Profile {
+  _id: string;
+  email: string;
+  name: string;
+  ava: string;
 }
