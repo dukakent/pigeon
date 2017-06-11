@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RoomService } from './room.service';
 import { MdDialog } from '@angular/material';
 import { CallComponent } from '../call/call.component';
+import { CallService } from '../call/call.service';
 
 @Component({
   templateUrl: './room.component.html',
@@ -15,7 +16,8 @@ export class RoomComponent {
   constructor(
     private route: ActivatedRoute,
     private roomService: RoomService,
-    private callDialog: MdDialog
+    private callDialog: MdDialog,
+    private callService: CallService
   ) {
     this.route.params
       .map(params => params['id'])
@@ -24,10 +26,7 @@ export class RoomComponent {
 
         if (!this.room) {
           this.roomService.roomsStream
-            .filter(room => {
-              const tmp = room._id === id;
-              return tmp;
-            })
+            .filter(room => room._id === id)
             .subscribe(room => {
               this.room = room;
             });

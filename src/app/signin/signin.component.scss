@@ -3,8 +3,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 10px;
 }
 
-.btn-signin {
-  margin-top: 20px;
+.img-logo {
+  width: 100px;
+}
+
+h1 {
+  color: #666;
+  padding: 50px 0 20px;
+  font-size: 24px;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .signin-container { justify-content: space-around; }
+  .btn-signin { width: 100%; }
 }

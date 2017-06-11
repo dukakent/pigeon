@@ -1,4 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { CallService } from './call.service';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-call',
@@ -9,25 +11,24 @@ export class CallComponent implements OnInit, OnDestroy {
 
   isMicro: boolean;
   isCamera: boolean;
-  localMedia: MediaStream;
+  localMedia$: Subject<MediaStream>;
+  remoteMedia$: Subject<MediaStream>;
+
+  constructor(private callService: CallService) {
+    this.localMedia$ = this.callService.localMedia$;
+    this.remoteMedia$ = this.callService.remoteMedia$;
+  }
 
   ngOnInit() {
-    console.log('call');
-
     this.isMicro = true;
     this.isCamera = false;
 
-    navigator.mediaDevices.getUserMedia({
-      audio: false,
-      video: true
-    }).then(stream => {
-      this.localMedia = stream;
-    });
+    this.callService.getLocalMedia();
   }
 
   ngOnDestroy() {
-    if (this.localMedia) {
-      this.localMedia.getTracks().forEach(track => track.stop());
-    }
+    // if (this.localMedia) {
+    //   this.localMedia.getTracks().forEach(track => track.stop());
+    // }
   }
 }

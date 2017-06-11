@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Http, HttpModule, RequestOptions } from '@angular/http';
-import { MaterialModule } from '@angular/material';
-import { ButtonsModule } from 'ng2-bootstrap/buttons';
+import { MdCardModule, MdMenuModule, MdInputModule, MdButtonModule } from '@angular/material';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { AuthHttp } from 'angular2-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +27,7 @@ import { RoomControlComponent } from './room/room-control/room-control.component
 import { ProfileWidgetComponent } from './profile/profile-widget/profile-widget.component';
 import { HeaderComponent } from './header/header.component';
 import { CallComponent } from './call/call.component';
+import { CallService } from './call/call.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,10 @@ import { CallComponent } from './call/call.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot(),
+    MdCardModule,
+    MdMenuModule,
+    MdInputModule,
+    MdButtonModule,
     ButtonsModule.forRoot()
   ],
   providers: [
@@ -63,7 +67,8 @@ import { CallComponent } from './call/call.component';
     },
     AuthedUserGuard,
     GuestUserGuard,
-    RoomService
+    RoomService,
+    CallService
   ],
   bootstrap: [AppComponent],
   entryComponents: [ CallComponent ]

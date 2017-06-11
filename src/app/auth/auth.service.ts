@@ -63,14 +63,14 @@ export class AuthService {
       email: auth0Profile.email,
       name: auth0Profile.user_metadata.name,
       ava: ''
-    }
+    };
   }
 
   private sync(profile: Profile) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
 
     this.authHttp
-      .post('/api/user', JSON.stringify(profile), headers)
+      .post('/api/user', JSON.stringify(profile), { headers })
       .map((res) => res.json())
       .subscribe((upProfile) => Object.assign(profile, upProfile));
   }
