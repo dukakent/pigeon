@@ -14,7 +14,7 @@ export class GuestUserGuard implements CanActivate {
       this.router.navigate(['']);
     }
 
-    return !isSignedIn;
+    return false;
   }
 
 }

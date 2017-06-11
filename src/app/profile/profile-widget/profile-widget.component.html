@@ -1,4 +1,8 @@
-<button md-button [mdMenuTriggerFor]="headerMenu" class="full-size">{{ profile.name }}</button>
-<md-menu #headerMenu="mdMenu">
+<md-menu [yPosition]="'below'" [overlapTrigger]="false" #headerMenu="mdMenu" class="menu">
+  <button md-menu-item (click)="onLogoutClick()">Setup profile</button>
   <button md-menu-item (click)="onLogoutClick()">Logout</button>
 </md-menu>
+<button md-button [mdMenuTriggerFor]="headerMenu" class="full-size">
+  <img src="../../../assets/img/kent.jpg" alt="" class="img-user">
+  <span>{{ profile.name }}</span>
+</button>

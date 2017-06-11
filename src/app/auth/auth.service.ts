@@ -10,7 +10,12 @@ declare const Auth0Lock: any;
 @Injectable()
 export class AuthService {
 
-  public profile: Profile;
+  public profile: Profile = {
+    _id: '1',
+    email: 'e@e.com',
+    name: 'Inokentii Duka',
+    ava: ''
+  };
   private token: string;
   private lock;
 
@@ -20,41 +25,41 @@ export class AuthService {
     private ws: WebSocketService
   ) {
 
-    if (this.isAuthed()) {
-      const auth0Profile = JSON.parse(localStorage.getItem('profile'));
-      this.profile = this.createProfileFromAuth0(auth0Profile);
-      this.token = localStorage.getItem('id_token');
-      this.ws.authenticate(this.token);
-    }
-
-    this.lock = new Auth0Lock('QknQ2gxsD5g9gszEIuH4AogrCp1hrbFK', 'dukakent.auth0.com', {
-      autoclose: true,
-      additionalSignUpFields: [
-        {
-          name: 'name',
-          placeholder: 'Enter your full name'
-        }
-      ],
-      auth: {
-        redirect: false,
-        sso: false
-      }
-    });
-
-    this.lock.on('authenticated', (authResult) => {
-      this.lock.getProfile(authResult.idToken, (error, profile) => {
-        if (error) {
-          return;
-        }
-
-        localStorage.setItem('id_token', authResult.idToken);
-        localStorage.setItem('profile', JSON.stringify(profile));
-        this.profile = this.createProfileFromAuth0(profile);
-        this.ws.authenticate(authResult.idToken);
-        this.sync(this.profile);
-        this.router.navigate(['']);
-      });
-    });
+    // if (this.isAuthed()) {
+    //   const auth0Profile = JSON.parse(localStorage.getItem('profile'));
+    //   this.profile = this.createProfileFromAuth0(auth0Profile);
+    //   this.token = localStorage.getItem('id_token');
+    //   this.ws.authenticate(this.token);
+    // }
+    //
+    // this.lock = new Auth0Lock('QknQ2gxsD5g9gszEIuH4AogrCp1hrbFK', 'dukakent.auth0.com', {
+    //   autoclose: true,
+    //   additionalSignUpFields: [
+    //     {
+    //       name: 'name',
+    //       placeholder: 'Enter your full name'
+    //     }
+    //   ],
+    //   auth: {
+    //     redirect: false,
+    //     sso: false
+    //   }
+    // });
+    //
+    // this.lock.on('authenticated', (authResult) => {
+    //   this.lock.getProfile(authResult.idToken, (error, profile) => {
+    //     if (error) {
+    //       return;
+    //     }
+    //
+    //     localStorage.setItem('id_token', authResult.idToken);
+    //     localStorage.setItem('profile', JSON.stringify(profile));
+    //     this.profile = this.createProfileFromAuth0(profile);
+    //     this.ws.authenticate(authResult.idToken);
+    //     this.sync(this.profile);
+    //     this.router.navigate(['']);
+    //   });
+    // });
   }
 
   private createProfileFromAuth0(auth0Profile): Profile {
@@ -80,13 +85,14 @@ export class AuthService {
   }
 
   isAuthed() {
-    return tokenNotExpired();
+    // return tokenNotExpired();
+    return true;
   }
 
   logout() {
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('profile');
-    this.profile = null;
-    this.router.navigate(['signin']);
+    // localStorage.removeItem('id_token');
+    // localStorage.removeItem('profile');
+    // this.profile = null;
+    // this.router.navigate(['signin']);
   }
 }

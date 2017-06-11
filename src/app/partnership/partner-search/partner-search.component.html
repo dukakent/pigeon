@@ -2,9 +2,18 @@
   <input type="text" #keywordInput placeholder="Start typing name" (keyup)="find(keywordInput.value)">
 </div>
 <div class="matches">
-  <ul>
-    <li *ngFor="let match of matches">
-      {{ match.name }} <button (click)="invite(match._id)">Invite</button>
-    </li>
-  </ul>
+  <md-list>
+    <md-list-item *ngFor="let match of matches" class="found">
+      <div class="found-photo">
+        <img [src]="match.ava" alt="">
+      </div>
+      <div class="found-name">
+        <div>{{ match.name }}</div>
+        <div class="status"
+             [class.online]="match.status === 'online'"
+             [innerText]="match.status"></div>
+      </div>
+      <button md-button (click)="invite(match._id)" class="found-invite">Invite</button>
+    </md-list-item>
+  </md-list>
 </div>

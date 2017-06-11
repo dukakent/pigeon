@@ -14,7 +14,7 @@ export class AuthedUserGuard implements CanActivate {
       this.router.navigate(['signin']);
     }
 
-    return isSignedIn;
+    return true;
   }
 
 }

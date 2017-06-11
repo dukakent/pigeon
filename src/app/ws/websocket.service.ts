@@ -8,23 +8,23 @@ export class WebSocketService {
   private socket;
 
   constructor() {
-    this.socket = io();
+    //this.socket = io();
   }
 
   authenticate(token) {
-    this.socket.emit('authenticate', { token: token });
+    //this.socket.emit('authenticate', { token: token });
   }
 
   listen(channel) {
-    return Observable.create(observer => {
-      this.socket.on(channel, (data) => {
-        observer.next(data);
-      });
-    });
+    // return Observable.create(observer => {
+    //   this.socket.on(channel, (data) => {
+    //     observer.next(data);
+    //   });
+    // });
   }
 
   send(channel, data) {
-    this.socket.emit(channel, data);
+    // this.socket.emit(channel, data);
   }
 
 }

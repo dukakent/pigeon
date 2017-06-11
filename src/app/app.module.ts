@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Http, HttpModule, RequestOptions } from '@angular/http';
-import { MdCardModule, MdMenuModule, MdInputModule, MdButtonModule } from '@angular/material';
+import { MdCardModule, MdMenuModule, MdInputModule, MdButtonModule, MdTabsModule } from '@angular/material';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { AuthHttp } from 'angular2-jwt';
 
@@ -28,6 +28,7 @@ import { ProfileWidgetComponent } from './profile/profile-widget/profile-widget.
 import { HeaderComponent } from './header/header.component';
 import { CallComponent } from './call/call.component';
 import { CallService } from './call/call.service';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,9 @@ import { CallService } from './call/call.service';
     MdMenuModule,
     MdInputModule,
     MdButtonModule,
+    MdTabsModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
     ButtonsModule.forRoot()
   ],
   providers: [

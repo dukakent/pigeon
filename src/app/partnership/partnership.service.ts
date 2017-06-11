@@ -11,56 +11,94 @@ export class PartnershipService {
 
   private knownPartnersStream;
 
-  knownPartners: Partner[];
+  knownPartners: Partner[] = [
+    {
+      _id: '',
+      email: '',
+      name: 'Steve Doe',
+      status: 'offline'
+    },
+    {
+      _id: '',
+      email: '',
+      name: 'Bill Hopkins',
+      status: 'online'
+    },
+    {
+      _id: '',
+      email: '',
+      name: 'David Gates',
+      status: 'online'
+    },
+    {
+      _id: '',
+      email: '',
+      name: 'Dmytro Shpak',
+      status: 'offline'
+    },
+    {
+      _id: '',
+      email: '',
+      name: 'Vladimir Sverdlov',
+      status: 'offline'
+    },
+    {
+      _id: '',
+      email: '',
+      name: 'Anna Sova',
+      status: 'online'
+    }
+  ];
+
   unknownPartners: Partner[];
 
   constructor(private authHttp: AuthHttp, private ws: WebSocketService, private roomService: RoomService) {
-    this.knownPartners = [];
-    this.unknownPartners = [];
-
-    this.ws
-      .listen('partner/new')
-      .subscribe((partner) => {
-        this.knownPartners.push(partner);
-      });
-
-    this.ws
-      .listen('partner/remove')
-      .subscribe((id) => {
-        const removingPartner = this.knownPartners.find(partner => partner._id === id);
-        this.remove(removingPartner);
-      });
-
-    this.fetch();
+    // this.knownPartners = [];
+    // this.unknownPartners = [];
+    //
+    // this.ws
+    //   .listen('partner/new')
+    //   .subscribe((partner) => {
+    //     this.knownPartners.push(partner);
+    //   });
+    //
+    // this.ws
+    //   .listen('partner/remove')
+    //   .subscribe((id) => {
+    //     const removingPartner = this.knownPartners.find(partner => partner._id === id);
+    //     this.remove(removingPartner);
+    //   });
+    //
+    // this.fetch();
   }
 
   getByIds(ids) {
-    for (const id of ids) {
-      this.authHttp.get('api/user/' + id)
-        .map(res => res.json())
-        .subscribe(this.spread);
-    }
+    // for (const id of ids) {
+    //   this.authHttp.get('api/user/' + id)
+    //     .map(res => res.json())
+    //     .subscribe(this.spread);
+    // }
   }
 
   fetch() {
-    this.authHttp.get('api/partner/myPartners')
-      .map(res => res.json())
-      .subscribe((res: Partner[]) => {
-        res.forEach((partner) => {
-          this.knownPartners.push(<Partner> partner);
-        });
-      });
+    // this.authHttp.get('api/partner/myPartners')
+    //   .map(res => res.json())
+    //   .subscribe((res: Partner[]) => {
+    //     res.forEach((partner) => {
+    //       this.knownPartners.push(<Partner> partner);
+    //     });
+    //   });
   }
 
   removePartner(partner) {
-    this.ws.send('partner/remove', partner._id);
-    this.remove(partner);
+    // this.ws.send('partner/remove', partner._id);
+    // this.remove(partner);
   }
 
   remove(partner) {
-    const partnerIndex = this.knownPartners.indexOf(partner);
-    // this.roomService.rooms.find(room => room.)
-    this.knownPartners.splice(partnerIndex, 1);
+    // const partnerIndex = this.knownPartners.indexOf(partner);
+    // // this.roomService.rooms.find(room => room.)
+    // this.knownPartners.splice(partnerIndex, 1);
   }
 
   private spread(partner) {
@@ -72,6 +110,6 @@ export class PartnershipService {
     //   this.unknownPartners = partner;
     // }
 
-    this.knownPartners = partner;
+    // this.knownPartners = partner;
   }
 }

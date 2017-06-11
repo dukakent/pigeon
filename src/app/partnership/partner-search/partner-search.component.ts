@@ -9,7 +9,57 @@ import { Partner } from '../../shared/models/partner';
   styleUrls: ['./partner-search.component.scss']
 })
 export class PartnerSearchComponent {
-  private matches: Partner[];
+  private matches = [
+    {
+      _id: '',
+      email: '',
+      name: 'John Doe',
+      status: 'offline',
+      ava: 'assets/img/p1.jpg'
+    },
+    {
+      _id: '',
+      email: '',
+      name: 'John Krakenberg',
+      status: 'online',
+      ava: 'assets/img/p1.jpg'
+    },
+    {
+      _id: '',
+      email: '',
+      name: 'Johnny Depp',
+      status: 'offline',
+      ava: 'assets/img/p1.jpg'
+    },
+    {
+      _id: '',
+      email: '',
+      name: 'Johny Skunk',
+      status: 'offline',
+      ava: 'assets/img/p1.jpg'
+    },
+    {
+      _id: '',
+      email: '',
+      name: 'Johny Heisenberg',
+      status: 'offline',
+      ava: 'assets/img/p1.jpg'
+    },
+    {
+      _id: '',
+      email: '',
+      name: 'Johny Skywalker',
+      status: 'offline',
+      ava: 'assets/img/p1.jpg'
+    },
+    {
+      _id: '',
+      email: '',
+      name: 'Johny Drain',
+      status: 'offline',
+      ava: 'assets/img/p1.jpg'
+    }
+  ];
 
   constructor(
     private authHttp: AuthHttp,
@@ -17,20 +67,20 @@ export class PartnerSearchComponent {
   ) {}
 
   find(q) {
-    if (!q) {
-      this.matches = [];
-      return false;
-    }
-
-    const params: URLSearchParams = new URLSearchParams();
-    params.set('q', q);
-
-    this.authHttp
-      .get('/api/user/search', { search: params })
-      .map(res => res.json())
-      .subscribe((res) => {
-        this.matches = res as Partner[];
-      });
+    // if (!q) {
+    //   this.matches = [];
+    //   return false;
+    // }
+    //
+    // const params: URLSearchParams = new URLSearchParams();
+    // params.set('q', q);
+    //
+    // this.authHttp
+    //   .get('/api/user/search', { search: params })
+    //   .map(res => res.json())
+    //   .subscribe((res) => {
+    //     this.matches = res as Partner[];
+    //   });
   }
 
   invite(id) {

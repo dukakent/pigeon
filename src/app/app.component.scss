@@ -18,10 +18,27 @@ app-header {
 }
 
 .main {
+  padding: 20px;
   flex-grow: 1;
   overflow-y: auto;
 }
 
 :host /deep/ md-tab-group .mat-tab-label {
   min-width: 0;
+}
+
+.toggle-sidebar {
+  display: none;
+  min-width: 40px;
+  padding: 0;
+}
+
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none;
+  }
+
+  .toggle-sidebar {
+    display: block;
+  }
 }

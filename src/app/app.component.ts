@@ -7,5 +7,13 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(public auth: AuthService) {}
+  mobileSidebarShown = false;
+
+  constructor(public auth: AuthService) {
+
+  }
+
+  toggleMobileSidebar() {
+    this.mobileSidebarShown = !this.mobileSidebarShown;
+  }
 }

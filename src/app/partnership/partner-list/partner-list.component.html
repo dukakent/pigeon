@@ -1,6 +1,12 @@
 <md-list>
-  <md-list-item *ngFor="let partner of partners">
-    {{ partner.name }}
-    <button md-button (click)="removePartner(partner)">×</button>
+  <md-list-item *ngFor="let partner of partners" class="partner">
+    <button md-button class="partner-name">
+      <span
+        class="status"
+        [class.online]="partner.status === 'online'"
+      ></span>
+      <span>{{ partner.name }}</span>
+    </button>
+    <button md-button (click)="removePartner(partner)" class="remove-partner">×</button>
   </md-list-item>
 </md-list>

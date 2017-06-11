@@ -78,17 +78,17 @@ export class CallService {
       this.remoteMedia$.next(e.stream);
     };
 
-    this.ws.listen('rtc').subscribe(data => {
-      if (data.sdp) {
-        this.peerConnection.setRemoteDescription(new RTCSessionDescription(data.sdp), () => {
-          if (this.peerConnection.remoteDescription.type === 'offer') {
-            this.peerConnection.createAnswer(desc => this.localDescCreated(desc), () => {});
-          }
-        });
-      } else {
-        this.peerConnection.addIceCandidate(new RTCIceCandidate(data.candidate));
-      }
-    });
+    // this.ws.listen('rtc').subscribe(data => {
+    //   if (data.sdp) {
+    //     this.peerConnection.setRemoteDescription(new RTCSessionDescription(data.sdp), () => {
+    //       if (this.peerConnection.remoteDescription.type === 'offer') {
+    //         this.peerConnection.createAnswer(desc => this.localDescCreated(desc), () => {});
+    //       }
+    //     });
+    //   } else {
+    //     this.peerConnection.addIceCandidate(new RTCIceCandidate(data.candidate));
+    //   }
+    // });
   }
 
   private localDescCreated(desc) {

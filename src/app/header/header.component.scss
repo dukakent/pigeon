@@ -31,3 +31,7 @@ h2 {
   border-left: 1px #e0e0e0 solid;
   height: 100%;
 }
+
+@media (max-width: 767px) {
+  .app-name { display: none; }
+}
