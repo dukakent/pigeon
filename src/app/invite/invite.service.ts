@@ -8,7 +8,17 @@ export class InviteService {
 
   private inviteStream;
 
-  invites: Invite[];
+  invites: any = [
+    {
+      from: 'Alex Stanford'
+    },
+    {
+      from: 'Jimmy Trump'
+    },
+    {
+      from: 'Mary Womack'
+    }
+  ];
 
   constructor(private ws: WebSocketService, private authHttp: AuthHttp) {
     // this.invites = [];

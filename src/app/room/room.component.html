@@ -1,8 +1,26 @@
 <h3 [innerHTML]="room?.name"></h3>
+<div class="participants">
+  <span *ngFor="let partner of room.participants" class="participant">
+    <span class="status" [class.online]="partner.status === 'online'"></span>
+    <span class="participant-name" [innerText]="partner.name"></span>
+  </span>
+</div>
 <div class="all-messages">
   <div *ngFor="let message of room?.messages">
-    <span><strong>{{ message.sender?.name }}:</strong></span>
-    <span>{{ message.text }}</span>
+    <div
+      class="message clearfix"
+      [ngClass]="{
+        'message-their': message.sender.name !== 'Inokentii Duka',
+        'message-my': message.sender.name === 'Inokentii Duka'
+      }">
+      <div class="message-author text-center">
+        <img [src]="message.sender.ava" alt=""><br>
+        <strong>{{ message.sender?.name }}</strong>
+      </div>
+      <div class="message-text">
+        {{ message.text }}
+      </div>
+    </div>
   </div>
 </div>
 <div class="message-create">

@@ -11,7 +11,39 @@ import { CallService } from '../call/call.service';
 })
 export class RoomComponent {
 
-  public room;
+  public room = {
+    name: 'Remote Team',
+    participants: [
+      {
+        name: 'Steve Doe',
+        status: 'offline'
+      },
+      {
+        name: 'Bill Hopkins',
+        status: 'online'
+      },
+      {
+        name: 'David Gates',
+        status: 'online'
+      }
+    ],
+    messages: [
+      {
+        sender: {
+          name: 'Steve Doe',
+          ava: 'assets/img/p1.jpg'
+        },
+        text: 'Hi Inokentii! Are you here?'
+      },
+      {
+        sender: {
+          name: 'Inokentii Duka',
+          ava: 'assets/img/kent.jpg'
+        },
+        text: 'Hello Steve! Nice to hear you. I\'m here. How can I help you?'
+      }
+    ]
+  };
 
   constructor(
     private route: ActivatedRoute,
@@ -19,19 +51,19 @@ export class RoomComponent {
     private callDialog: MdDialog,
     private callService: CallService
   ) {
-    this.route.params
-      .map(params => params['id'])
-      .subscribe(id => {
-        this.room = this.roomService.getById(id);
-
-        if (!this.room) {
-          this.roomService.roomsStream
-            .filter(room => room._id === id)
-            .subscribe(room => {
-              this.room = room;
-            });
-        }
-      });
+    // this.route.params
+    //   .map(params => params['id'])
+    //   .subscribe(id => {
+    //     this.room = this.roomService.getById(id);
+    //
+    //     if (!this.room) {
+    //       this.roomService.roomsStream
+    //         .filter(room => room._id === id)
+    //         .subscribe(room => {
+    //           this.room = room;
+    //         });
+    //     }
+    //   });
   }
 
   onNewMessage(message) {

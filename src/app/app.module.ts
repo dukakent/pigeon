@@ -2,7 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Http, HttpModule, RequestOptions } from '@angular/http';
-import { MdCardModule, MdMenuModule, MdInputModule, MdButtonModule, MdTabsModule } from '@angular/material';
+import {
+  MdCardModule, MdMenuModule, MdInputModule, MdButtonModule, MdTabsModule,
+  MdDialogModule
+} from '@angular/material';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { AuthHttp } from 'angular2-jwt';
 
@@ -55,6 +58,7 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
     MdInputModule,
     MdButtonModule,
     MdTabsModule,
+    MdDialogModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
     ButtonsModule.forRoot()

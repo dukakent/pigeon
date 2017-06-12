@@ -1,0 +1,36 @@
+.invite {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px #eee solid;
+  padding: 10px;
+}
+
+.invite-initiator {
+  font-size: 16px;
+}
+
+.invite-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 20px;
+}
+
+.invite-from {
+  flex-grow: 1;
+}
+
+.invite-approve {
+  color: green;
+}
+
+.invite-reject {
+  color: red;
+}
+
+@media (max-width: 767px) {
+  .invite-from .small { display: none; }
+  .invite-initiator { display: block; }
+  .invite-items { width: 80px; }
+}

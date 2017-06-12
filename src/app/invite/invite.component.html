@@ -1,9 +1,13 @@
-<ul>
-  <li *ngFor="let invite of invites">
-    <div>
-      From: {{ invite.from.name }}
-      <button md-button (click)="approve(invite)">Approve</button>
-      <button md-button (click)="reject(invite)">Reject</button>
+<md-list>
+  <md-list-item *ngFor="let invite of invites" class="invite">
+    <span class="invite-from">
+      <span class="small">From:</span>
+      <img class="invite-photo" src="../../assets/img/p1.jpg" alt="">
+      <span class="invite-initiator">{{ invite.from }}</span>
+    </span>
+    <div class="invite-items">
+      <button class="invite-approve" md-button (click)="approve(invite)">Approve</button>
+      <button class="invite-reject" md-button (click)="reject(invite)">Reject</button>
     </div>
-  </li>
-</ul>
+  </md-list-item>
+</md-list>
